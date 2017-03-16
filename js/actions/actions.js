@@ -26,6 +26,12 @@ export const fetchFewestGuessesSuccess = guesses => ({
     guesses
 })
 
+export const RECEIVE_GUESSES_DATA = 'RECEIVE_GUESSES_DATA'
+export const receiveGuessesData = guesses => ({
+  type: RECEIVE_GUESSES_DATA,
+  guesses
+})
+
 export const fetchFewestGuesses = () => dispatch => {
     const url = new URL('localhost:8081/fewestGuesses');
 
@@ -40,10 +46,21 @@ export const fetchFewestGuesses = () => dispatch => {
     return dispatch(
       fetchFewestGuessesSuccess(fewestGuesses)
     )
-}).catch(error =>
-   dispatch(fetchFewestGuessesError(error))
+}).catch(error =>{}
+  //  dispatch(fetchFewestGuessesError(error))
 );
 }
-export const saveFewestGuesses = score => dispatch => {
-    const url = new URL('localhost:8081/fewestGuesses')
+export const saveFewestGuesses = guesses => dispatch => {
+      console.log(guesses);
+      return fetch('http://localhost:8081/fewestGuesses', {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(guesses)
+    })
+    .then(response=> response.json())
+    .then(json=> {
+      dispatch(receiveGuessesData(json.guesses))})
+
 }

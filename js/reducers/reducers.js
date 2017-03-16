@@ -3,7 +3,8 @@ import {
     MAKE_GUESS,
     TOGGLE_INFO_MODEL,
     UPDATE_GUESS_FIELD,
-    FETCH_FEWEST_GUESSES_SUCCESS
+    FETCH_FEWEST_GUESSES_SUCCESS,
+    RECEIVE_GUESSES_DATA
 } from '../actions/actions';
 
 
@@ -38,6 +39,7 @@ export default (state, action) => {
 
 
         const difference = Math.abs(guess - state.correctAnswer);
+        console.log(state.correctAnswer);
 
         let feedback;
         if (difference >= 50) {
@@ -89,5 +91,12 @@ export default (state, action) => {
           fewestGuesses: action.guesses
       });
     }
+    else if (action.type === RECEIVE_GUESSES_DATA) {
+      console.log('reducer', action.guesses);
+      state = Object.assign({},state,{
+          fewestGuesses: action.guesses
+      })
+    }
+
     return state;
 };

@@ -5,14 +5,16 @@ import Help from './help';
 import {
     newGame,
     toggleInfoModel,
-    fetchFewestGuesses
+    fetchFewestGuesses,
+    saveFewestGuesses
 } from '../actions/actions';
 
 
 const mapStateToProps = (state, props) => ({
     guesses: state.guesses,
     showInfoModel: state.showInfoModel,
-    fewestGuesses: state.fewestGuesses
+    fewestGuesses: state.fewestGuesses,
+    feedback: state.feedback
 });
 export class Game extends React.Component {
     constructor(props) {
@@ -27,6 +29,12 @@ export class Game extends React.Component {
     resetGame(event) {
       this.props.dispatch(newGame());
       this.props.dispatch(fetchFewestGuesses())
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.feedback === 'You got it!') {
+       this.props.dispatch(saveFewestGuesses({guesses:this.props.guesses.length + 1}))
+      }
     }
 
     componentWillMount() {
