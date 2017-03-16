@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {
     updateGuessField,
     makeGuess
+    fewestGuesses
 } from '../actions/actions';
 
 
@@ -14,6 +15,7 @@ const mapStateToProps = (state, props) => ({
     feedback:state.feedback,
     correctAnswer: state.correctAnswer,
     guessDraft:state.guessDraft
+    fewestGuesses: 
 });
 
 
@@ -53,6 +55,7 @@ export class Card extends React.Component {
             <button className="guessButton" type ="submit" onClick= {this.makeGuess} >Guess</button>
             <p className = "guess">Guess # <span className='span'>{this.props.guesses.length}</span></p>
             <h3 className="array">{`${this.props.guesses}`}</h3>
+            <h3 className="fewguesses">{`This is the fewest guesses${this.props.fewestGuesses}`}</h3>
         </div>
         );
     }

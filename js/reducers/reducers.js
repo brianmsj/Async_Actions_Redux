@@ -2,15 +2,18 @@ import {
     NEW_GAME,
     MAKE_GUESS,
     TOGGLE_INFO_MODEL,
-    UPDATE_GUESS_FIELD
+    UPDATE_GUESS_FIELD,
+    fetchFewestGuesses
 } from '../actions/actions';
+
 
 const initialState = {
     guesses: [],
     feedback: 'Pick Between 1 and 100',
     correctAnswer: Math.round(Math.random() * 100),
     showInfoModel: false,
-    guessDraft:""
+    guessDraft:"",
+    fewestGuesses: 0
 };
 
 export default (state, action) => {
@@ -79,6 +82,11 @@ export default (state, action) => {
             guessDraft:action.value
         })
         return state;
+    }
+    else if (action.type === fetchFewestGuesses) {
+      state = Object.assign({},state {
+          fewestGuesses: action.guesses
+      });
     }
     return state;
 };
