@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {
     updateGuessField,
     makeGuess
-    fewestGuesses
 } from '../actions/actions';
 
 
@@ -14,8 +13,8 @@ const mapStateToProps = (state, props) => ({
     guesses: state.guesses,
     feedback:state.feedback,
     correctAnswer: state.correctAnswer,
-    guessDraft:state.guessDraft
-    fewestGuesses: 
+    guessDraft:state.guessDraft,
+    fewestGuesses: state.fewestGuesses
 });
 
 
@@ -50,12 +49,12 @@ export class Card extends React.Component {
                 <h2 className="banner"> {this.props.feedback}</h2>
             </div>
             <div className='input-div'>
-              <input autoFocus textarea = 'text' placeholder=" 42" className = "input-field"  onChange={this.grabVal} value={this.props.guessDraft}></input>
+              <input placeholder=" 42" className = "input-field"  onChange={this.grabVal} value={this.props.guessDraft}></input>
             </div>
             <button className="guessButton" type ="submit" onClick= {this.makeGuess} >Guess</button>
             <p className = "guess">Guess # <span className='span'>{this.props.guesses.length}</span></p>
             <h3 className="array">{`${this.props.guesses}`}</h3>
-            <h3 className="fewguesses">{`This is the fewest guesses${this.props.fewestGuesses}`}</h3>
+            <h3 className="fewguesses">{`This is the fewest guesses ${this.props.fewestGuesses}`}</h3>
         </div>
         );
     }

@@ -4,26 +4,37 @@ import Card from './card';
 import Help from './help';
 import {
     newGame,
-    toggleInfoModel
+    toggleInfoModel,
+    fetchFewestGuesses
 } from '../actions/actions';
 
 
 const mapStateToProps = (state, props) => ({
     guesses: state.guesses,
-    showInfoModel: state.showInfoModel
+    showInfoModel: state.showInfoModel,
+    fewestGuesses: state.fewestGuesses
 });
 export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.resetGame = this.resetGame.bind(this);
         this.showHelp = this.showHelp.bind(this);
+      //  this.fetchFewestGuesses = this.fetchFewestGuesses.bind(this);
     }
     showHelp(event) {
        this.props.dispatch(toggleInfoModel())
     }
     resetGame(event) {
-      this.props.dispatch(newGame())
+      this.props.dispatch(newGame());
+      this.props.dispatch(fetchFewestGuesses())
     }
+
+    componentWillMount() {
+      this.props.dispatch(fetchFewestGuesses())
+    }
+
+
+
     render() {
         if(this.props.showInfoModel === true){
           return (

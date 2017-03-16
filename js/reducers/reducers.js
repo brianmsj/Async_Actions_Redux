@@ -3,7 +3,7 @@ import {
     MAKE_GUESS,
     TOGGLE_INFO_MODEL,
     UPDATE_GUESS_FIELD,
-    fetchFewestGuesses
+    FETCH_FEWEST_GUESSES_SUCCESS
 } from '../actions/actions';
 
 
@@ -83,8 +83,9 @@ export default (state, action) => {
         })
         return state;
     }
-    else if (action.type === fetchFewestGuesses) {
-      state = Object.assign({},state {
+    else if (action.type === FETCH_FEWEST_GUESSES_SUCCESS) {
+      console.log('reducer',action.guesses);
+      state = Object.assign({},state, {
           fewestGuesses: action.guesses
       });
     }

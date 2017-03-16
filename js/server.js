@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     next();
 });
 
-let guesses = 0;
+let guesses = 5;
 
 app.get('/fewestGuesses', (req, res) => {
     res.json({
