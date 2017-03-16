@@ -1,0 +1,211 @@
+*:focus {
+    outline: none;
+}
+.Card {
+  display: block;
+	text-align: center;
+  border: 1px solid #D4FD02;
+  max-height: 27em;
+  max-width: 25em;
+  margin: auto;
+  background-color: #212121;
+  font-family: 'Nunito' sans-serif;
+  opacity: 1;
+  transition: opacity 1500ms ease;
+}
+
+
+@keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px;}
+    100% {top: 100px;}
+}
+
+.Game {
+  background-color: #212121;
+  position:fixed;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+
+}
+
+.Card.hidden {
+  opacity: 0;
+}
+
+/*btn*/
+.need-help {
+
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-family: 'Nunito', sans-serif;
+  background-color: transparent;
+
+
+
+
+
+}
+/*btn*/
+.new-game {
+  float: right;
+  border-color: 2px #d4fd02;
+  color: white;
+  font-size: 1.25em;
+  font-family: 'Nunito', sans-serif;
+  background-color: transparent;
+  border: none;
+
+
+}
+
+.new-game:hover{
+	font-size: 1.37em;
+	font-weight: bold;
+
+}
+
+
+.need-help:hover{
+	font-size: 1.37em;
+	font-weight: bold;
+
+}
+
+
+
+/*hot or cold title*/
+.game-title {
+    color: white;
+    font-size: 3.5em;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+
+
+
+
+}
+
+.bannerDiv{
+	display: flex;
+	width: 100%;
+	height: 35%;
+	background-color: #212121 ;
+
+
+}
+
+.banner{
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
+  font-weight: lighter;
+  color: #8d9095;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+
+}
+
+.image-1,.input-field {
+  display: inline-block;
+
+}
+
+
+.input-field{
+	  display: flex;
+    max-width: 85px;
+    margin: auto;
+    border: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight:100;
+    background-color: transparent;
+    max-height: 50px;
+    font-size: 3em;
+    text-align: left;
+    font-color: #d4fd02;
+
+}
+textarea:focus, .input-field:focus {
+    color:#d4fd02 ;
+}
+
+input, select, textarea{
+    color:#d4fd02;
+}
+
+.guessButton{
+    display: flex;
+    height: 40px;
+    width: 90px;
+    margin: auto;
+    margin-top: 30px;
+    border-color: 2px solid #d4fd02;
+    color: white;
+    font-size: 1.25em;
+    font-family: 'Raleway', sans-serif;
+    background-color: transparent;
+    text-align: center;
+    padding-left: 15px;
+}
+.guess{
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-family: 'Nunito', sans-serif;
+  background-color: transparent;
+  margin-bottom: 0;
+  margin-top: 5px;
+
+}
+.help-screen {
+  background-color:#212121;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  left: 0px;
+}
+
+.span {
+  font-size: 2em;
+  color: #d4fd02;
+}
+
+.array{
+font-family: 'Nunito', sans-serif;
+margin-top: 5px;
+color: #d4fd02;
+}
+
+.help-screen > button {
+margin-left: 46%;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-family: 'Nunito', sans-serif;
+  background-color: transparent;
+
+}
+.helplist{
+  color: #8d9095;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+.list{
+  list-style: none;
+}
+.help-title {
+  color: #d4fd02;
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.75em
+  font-weight: lighter;
+  text-align: center;
+}
