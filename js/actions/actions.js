@@ -25,6 +25,11 @@ export const fetchFewestGuessesSuccess = guesses => ({
     type: FETCH_FEWEST_GUESSES_SUCCESS,
     guesses
 })
+export const FETCH_FEWEST_GUESSES_ERROR = 'FETCH_FEWEST_GUESSES_ERROR'
+export const fetchFewestGuessesError = error => ({
+    type: FETCH_FEWEST_GUESSES_ERROR,
+    error
+})
 
 export const RECEIVE_GUESSES_DATA = 'RECEIVE_GUESSES_DATA'
 export const receiveGuessesData = guesses => ({
@@ -33,22 +38,22 @@ export const receiveGuessesData = guesses => ({
 })
 
 export const fetchFewestGuesses = () => dispatch => {
-    const url = new URL('localhost:8081/fewestGuesses');
+  const url = new URL('localhost:8081/fewestGuesses');
 
-   return fetch('http://localhost:8081/fewestGuesses').then(response => {
-     if (!response.ok) {
-       throw new Error(response.statusText);
-     }
-     return response.json();
-}).then(data => {
+  return fetch('http://localhost:8081/fewestGuesses').then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return response.json();
+  }).then(data => {
     console.log('data',data)
     const fewestGuesses = data.guesses;
     return dispatch(
       fetchFewestGuessesSuccess(fewestGuesses)
     )
-}).catch(error =>{}
-  //  dispatch(fetchFewestGuessesError(error))
-);
+  }).catch(error =>{
+    dispatch(fetchFewestGuessesError(error))
+  });  
 }
 export const saveFewestGuesses = guesses => dispatch => {
       console.log(guesses);

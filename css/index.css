@@ -209,3 +209,11 @@ margin-left: 46%;
   font-weight: lighter;
   text-align: center;
 }
+
+.fewguesses {
+  color: #d4fd02;
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.75em
+  font-weight: 100;
+  text-align: center;
+}

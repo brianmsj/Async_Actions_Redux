@@ -14,7 +14,8 @@ const initialState = {
     correctAnswer: Math.round(Math.random() * 100),
     showInfoModel: false,
     guessDraft:"",
-    fewestGuesses: 0
+    fewestGuesses: 0,
+    success: false
 };
 
 export default (state, action) => {
@@ -40,6 +41,7 @@ export default (state, action) => {
 
         const difference = Math.abs(guess - state.correctAnswer);
         console.log(state.correctAnswer);
+        let success = false;
 
         let feedback;
         if (difference >= 50) {
@@ -58,11 +60,13 @@ export default (state, action) => {
             feedback = "OMG, You're super close";
         }
         else {
-            feedback = 'You got it!';
+            feedback = "Success!";
+            success = true;
         }
 
         state = Object.assign({}, state, {
             feedback,
+            success,
             guesses: state.guesses.concat(action.guess),
             guessDraft: " ",
             guesses: [...state.guesses,state.guessDraft]

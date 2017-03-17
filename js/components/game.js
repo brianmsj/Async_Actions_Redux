@@ -14,7 +14,8 @@ const mapStateToProps = (state, props) => ({
     guesses: state.guesses,
     showInfoModel: state.showInfoModel,
     fewestGuesses: state.fewestGuesses,
-    feedback: state.feedback
+    feedback: state.feedback,
+    success: state.success
 });
 export class Game extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export class Game extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      if(nextProps.feedback === 'You got it!') {
+      if(nextProps.success === true) {
        this.props.dispatch(saveFewestGuesses({guesses:this.props.guesses.length + 1}))
       }
     }
